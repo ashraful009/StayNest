@@ -1,4 +1,4 @@
-const intData = require('./Data');
+const intData = require('./Data.js');
 const Listing = require('../models/listing.js');
 const mongoose = require('mongoose');
 

@@ -1,20 +1,5 @@
 const sampleListings = [
-  {
-    title: "Cozy Beachfront Cottage",
-    description: "Escape to this charming beachfront cottage for a relaxing getaway. Enjoy stunning ocean views and easy access to the beach.",
-    image: { filename: "listingimage", url: "https://picsum.photos/800/600?random=1" },
-    price: 1500,
-    location: "Malibu",
-    country: "United States"
-  },
-  {
-    title: "Modern Loft in Downtown",
-    description: "Stay in the heart of the city in this stylish loft apartment. Perfect for urban explorers!",
-    image: { filename: "listingimage", url: "https://picsum.photos/800/600?random=2" },
-    price: 1200,
-    location: "New York City",
-    country: "United States"
-  },
+  
   {
     title: "Mountain Retreat",
     description: "Unplug and unwind in this peaceful mountain cabin. Surrounded by nature, it's a perfect place to recharge.",
