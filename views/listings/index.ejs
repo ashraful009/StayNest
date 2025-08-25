@@ -1,30 +1,31 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <body>
     <h3>All Listings</h3>
-    <!-- <form method="GET" action="/listings/new">
-        <button>Create new Listing</button>
-    </form> -->
+
     <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
         <% for(let listing of allListing) { %>
-            <a href="/listings/<%= listing._id%>" style="text-decoration: none;" class="listing-link">
-        <div class="card col" style="width: 20rem;">
-        
-        <img 
-        src="<%= listing.image.url %>" 
-        class="card-img-top" 
-        alt="listing_image" 
-        style="height: 20rem;"
-        />
-        <div class="card-img-overlay"></div>
-        <div class="card-body">
-        <p class="card-text">
-        <b><%= listing.title %> <br> </b>
-        &#2547;<%= listing.price.toLocaleString("en-BD") %> / Night
-        </p>
-      </div>
-      </div>
-     <% } %> </a>
-  </div>
+            <a href="/listings/<%= listing._id %>" style="text-decoration: none;" class="listing-link">
+                <div class="card col" style="width: 20rem;">
+                    
+                    <!-- Image with default fallback -->
+                    <img 
+                        src="<%= listing.image && listing.image.url ? listing.image.url : '/images/default.jpg' %>" 
+                        class="card-img-top" 
+                        alt="listing_image" 
+                        style="height: 20rem; object-fit: cover;"
+                    />
 
-
+                    <div class="card-body">
+                        <p class="card-text">
+                            <!-- Title with fallback -->
+                            <b><%= listing.title ? listing.title : "Untitled Listing" %></b><br>
+                            
+                            <!-- Price with fallback -->
+                            &#2547;<%= listing.price ? listing.price.toLocaleString("en-BD") : "0" %> / Night
+                        </p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    </div>
 </body>

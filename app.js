@@ -5,7 +5,7 @@ const Listing = require('./models/listing');
 const path = require("path")
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate")
-
+const Review = require('./models/review'); 
 const dbURI = "mongodb://127.0.0.1:27017/test";
 main()
 .then(() => {
@@ -83,20 +83,20 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
   
 })
-// app.get('/testlistings', async (req, res) => {
-//     let sampleListing = new Listing({
-//         title: 'Sample Listing',
-//         description: 'This is a sample listing.',
-//         image: '',
-//         price: 100,
-//         location: 'Sample Location',
-//         country: 'Sample Country'
-//     });
-//     await sampleListing.save();
-//     console.log("sample listing created");
-    
-//     res.send('Sample listing created!');
-// }); 
+
+//reviews Route (post)
+app.post("/listings/:id/reviews", async (req, res) =>{
+  let listing = await Listing.findById(req.params.id);
+  let newReview = new Review(req.body.review);
+  
+  listing.reviews.push(newReview);
+  await newReview.save();
+  await listing.save();
+  res.redirect(`/listings/${listing._id}`)
+  
+})
+
+
 
 app.listen(8080, () => {
   console.log('Server is running on port 8080');
